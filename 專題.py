@@ -92,7 +92,7 @@ class LMODEL:
         self.pre_max = max[0]
         print('stock: ',index, ' max= ',max)
 
-        April = pd.read_csv(r'D:\股票csv\2603_4.csv')
+        April = pd.read_csv(r'2603_4.csv')
         tmp = predicted_data[len(predicted_data)-20:]
         plt.plot(test['open'].values, color = 'black', label = 'Real Stock Price')
         #plt.plot(tmp, color = 'green', label = 'Predicted Stock Price') #只要看四月的話
@@ -123,8 +123,8 @@ def get_omega(self, tau, P, sigma):
 #New version
 class BL_Model:
     def __init__(self, P, Q):
-        prices = pd.read_csv(r'D:\股票csv\total.csv')
-        tse = pd.read_csv(r"D:\股票csv\指數.csv")
+        prices = pd.read_csv(r'total.csv')
+        tse = pd.read_csv(r"指數.csv")
 
         prices['Date'] = pd.to_datetime(prices['Date'])
         prices = prices.set_index('Date')
@@ -181,10 +181,10 @@ class BL_Model:
 
 
 def get_lstm():
-    stock3 = pd.read_csv(r"D:\股票csv\2603.csv")
-    stock1 = pd.read_csv(r"D:\股票csv\2002.csv")
-    stock4 = pd.read_csv(r"D:\股票csv\2881.csv")
-    stock2 = pd.read_csv(r"D:\股票csv\2330.csv")
+    stock3 = pd.read_csv(r"2603.csv")
+    stock1 = pd.read_csv(r"2002.csv")
+    stock4 = pd.read_csv(r"2881.csv")
+    stock2 = pd.read_csv(r"2330.csv")
 
     one_model = LMODEL(stock1,2002)
     two_model = LMODEL(stock2,2330)
@@ -222,7 +222,7 @@ def get_report():
     return P,Q
 
 def get_cc_return():
-    df = pd.read_csv(r'D:\股票csv\total.csv')
+    df = pd.read_csv(r'total.csv')
     log_ret = np.log(df/df.shift()) # shift(): Move one unit downward
     log_ret = log_ret.drop(index=[0])
     log_ret = np.array(log_ret)
