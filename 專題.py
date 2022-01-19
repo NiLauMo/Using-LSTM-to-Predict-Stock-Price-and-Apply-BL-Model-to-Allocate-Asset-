@@ -41,7 +41,7 @@ class LMODEL:
 
         keras.backend.clear_session()
         regressor = Sequential()
-        print('x_train',X_train.shape[1])
+        # print('x_train',X_train.shape[1])
         
         regressor.add(LSTM(units = 100, input_shape = (X_train.shape[1], 1)))
         
@@ -57,7 +57,7 @@ class LMODEL:
         inputs = dataset[len(dataset) - len(test) - 20:].values
         inputs = inputs.reshape(-1,1)   # len(input)*1
 
-        print('inputs:',inputs)
+        # print('inputs:',inputs)
         inputs = sc.transform(inputs)
         max = 0
 
